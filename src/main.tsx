@@ -16,6 +16,7 @@ import UserProfile from "@/pages/user-profile/user-profile.tsx";
 import Followers from "@/pages/followers/followers.tsx";
 import Following from "@/pages/following/following.tsx";
 import { ThemeProvider } from "@/components/theme-provider";
+import AuthGuard from "@/features/user/authGuard.tsx";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <NextUIProvider>
         <ThemeProvider>
-          <RouterProvider router={router} />
+          <AuthGuard>
+            <RouterProvider router={router} />
+          </AuthGuard>
         </ThemeProvider>
       </NextUIProvider>
     </Provider>

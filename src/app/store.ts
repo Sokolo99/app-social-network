@@ -1,11 +1,20 @@
 import { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 
+import user from "../features/userSlice";
+
 import { api } from "@/app/services/api.ts";
+import { listenerMiddleware } from "@/middleware/middleware.ts";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
+    user,
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware()
+      .concat(api.middleware)
+      .prepend(listenerMiddleware.middleware);
   },
 });
 
