@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "@/index.css";
 import { Provider } from "react-redux";
-import { NextUIProvider } from "@nextui-org/react";
 
 import Auth from "./pages/auth/auth.tsx";
 
@@ -16,7 +15,7 @@ import UserProfile from "@/pages/user-profile/user-profile.tsx";
 import Followers from "@/pages/followers/followers.tsx";
 import Following from "@/pages/following/following.tsx";
 import { ThemeProvider } from "@/components/theme-provider";
-import AuthGuard from "@/features/user/authGuard.tsx";
+import { AuthGuard } from "@/features/user/authGuard.tsx";
 
 const router = createBrowserRouter([
   {
@@ -54,13 +53,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <NextUIProvider>
-        <ThemeProvider>
-          <AuthGuard>
-            <RouterProvider router={router} />
-          </AuthGuard>
-        </ThemeProvider>
-      </NextUIProvider>
+      <ThemeProvider>
+        <AuthGuard>
+          <RouterProvider router={router} />
+        </AuthGuard>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
 );

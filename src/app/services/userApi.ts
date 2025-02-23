@@ -1,6 +1,10 @@
 import { User } from "@/app/types.ts";
 import { api } from "@/app/services/api.ts";
 
+type CurrentUserResponse = {
+  user: User;
+};
+
 export const UserApi = api.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<
@@ -23,7 +27,7 @@ export const UserApi = api.injectEndpoints({
         body: userData,
       }),
     }),
-    current: builder.query<User, void>({
+    current: builder.query<CurrentUserResponse, void>({
       query: () => ({
         url: "/current",
         method: "GET",

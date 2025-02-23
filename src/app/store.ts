@@ -1,7 +1,7 @@
 import { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 
-import user from "../features/userSlice";
+import user from "../features/userSlice.ts";
 
 import { api } from "@/app/services/api.ts";
 import { listenerMiddleware } from "@/middleware/middleware.ts";
@@ -19,8 +19,8 @@ export const store = configureStore({
 });
 
 export type AppStore = typeof store;
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ThunkReturnType = void> = ThunkAction<
   ThunkReturnType,
   RootState,

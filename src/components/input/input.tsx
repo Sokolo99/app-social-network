@@ -34,6 +34,7 @@ function Input({
 
   return (
     <NextInput
+      endContent={endContent}
       errorMessage={`${errors[name]?.message ?? ""}`}
       id={name}
       isInvalid={invalid}

@@ -2,7 +2,7 @@ import { Spinner } from "@nextui-org/react";
 
 import { useCurrentQuery } from "@/app/services/userApi.ts";
 
-function AuthGuard({ children }: { children: JSX.Element }) {
+export const AuthGuard = ({ children }: { children: JSX.Element }) => {
   const { isLoading } = useCurrentQuery();
 
   if (isLoading) {
@@ -10,6 +10,4 @@ function AuthGuard({ children }: { children: JSX.Element }) {
   }
 
   return children;
-}
-
-export default AuthGuard;
+};

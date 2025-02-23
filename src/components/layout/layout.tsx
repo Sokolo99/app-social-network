@@ -7,8 +7,9 @@ import Container from "../container/container.tsx";
 import Header from "@/components/header/header.tsx";
 import NavBar from "@/components/nav-bar/nav-bar.tsx";
 import { selectIsAuthenticated, selectUser } from "@/features/userSlice.ts";
+import Profile from "@/components/profile/profile.tsx";
 
-function Layout() {
+export const Layout = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const user = useSelector(selectUser);
   const navigate = useNavigate();
@@ -29,9 +30,11 @@ function Layout() {
         <div className="flex-1 p-4">
           <Outlet />
         </div>
+        <div className="flex-2 p-4">
+          <div className="flex-col flex gap-5">{!user && <Profile />}</div>
+        </div>
       </Container>
     </>
   );
-}
-
+};
 export default Layout;
