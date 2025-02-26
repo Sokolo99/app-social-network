@@ -96,11 +96,33 @@ function Card({
           navigate("/");
           break;
         case "comment":
-          await deleteComment(id).unwrap();
+          await deleteComment(commentId).unwrap();
           await refetchPosts();
           break;
         default:
           throw new Error("Неверный аргумент cardFor");
+      }
+    } catch (error) {
+      if (hasErrorField(error)) {
+        setError(error.data.error);
+      } else {
+        setError(error as string);
+      }
+    }
+  };
+
+  const handleClick = async () => {
+    try {
+      likedByUser
+        ? await unlikePost(id).unwrap()
+        : await likePost({ postId: id }).unwrap();
+
+      if (cardFor === "current-post") {
+        await triggerGetPostById(id).unwrap();
+      }
+
+      if (cardFor === "post") {
+        await triggerGetAllPosts().unwrap();
       }
     } catch (error) {
       if (hasErrorField(error)) {
@@ -138,7 +160,7 @@ function Card({
       {cardFor !== "comment" && (
         <CardFooter className="gap-3">
           <div className="flex gap-5 items-center">
-            <div>
+            <div onClick={handleClick}>
               <MetaInfo
                 Icon={likedByUser ? FcDislike : MdOutlineFavoriteBorder}
                 count={likesCount}

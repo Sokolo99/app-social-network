@@ -22,6 +22,7 @@ function Register({ setSelected }: Props) {
   const {
     handleSubmit,
     control,
+    // @ts-ignore
     formState: { errors },
   } = useForm<Register>({
     mode: "onChange",

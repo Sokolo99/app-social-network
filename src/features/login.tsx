@@ -25,6 +25,7 @@ function Login({ setSelected }: Props) {
   const {
     handleSubmit,
     control,
+    // @ts-ignore
     formState: { errors },
   } = useForm<Login>({
     mode: "onChange",

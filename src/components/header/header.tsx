@@ -45,7 +45,7 @@ function Header() {
               className="gap-2"
               color="default"
               variant="flat"
-              onClick={handleLogout}
+              onPress={handleLogout}
             >
               <CiLogout /> <span>Выйти</span>
             </Button>

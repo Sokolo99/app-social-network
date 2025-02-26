@@ -15,7 +15,7 @@ function Input({
   name,
   label,
   placeholder,
-  type,
+  type = "text",
   control,
   required = "",
   endContent,
@@ -42,7 +42,7 @@ function Input({
       name={field.name}
       placeholder={placeholder}
       type={type}
-      value={field.value}
+      value={field.value || ""}
       onBlur={field.onBlur}
       onChange={field.onChange}
     />

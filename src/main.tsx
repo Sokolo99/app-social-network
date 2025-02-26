@@ -6,12 +6,12 @@ import "@/index.css";
 import { Provider } from "react-redux";
 
 import Auth from "./pages/auth/auth.tsx";
+import { UserProfile } from "./pages/user-profile/user-profile.tsx";
 
 import { store } from "@/app/store";
 import Layout from "@/components/layout/layout.tsx";
 import Posts from "@/pages/posts/posts.tsx";
 import CurrentPost from "@/pages/current-post/current-post.tsx";
-import UserProfile from "@/pages/user-profile/user-profile.tsx";
 import Followers from "@/pages/followers/followers.tsx";
 import Following from "@/pages/following/following.tsx";
 import { ThemeProvider } from "@/components/theme-provider";
